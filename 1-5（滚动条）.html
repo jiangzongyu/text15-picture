@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>1-5</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #drag{
+            width: 30px;
+            height: 30px;
+            background: red;
+            cursor: pointer;
+            position:absolute;
+            right: 0px;
+            top: 0px;
+        }
+        #container{
+            width: 300px;
+            height: 400px;
+            background:green;
+            position: absolute;
+        }
+        #content{
+            width: 270px;
+            height: 400px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="drag"></div>
+    <div id="content">132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222222222 132122222222222222222222222225552
+    </div>
+</div>
+</body>
+<script>
+    (function(){
+        var oDrag = document.getElementById('drag');
+        var oContainer = document.getElementById('container');
+        oDrag.onmousedown = function(e) {
+            e = e || window.event;
+
+            var aDisY = e.clientY - oDrag.offsetTop;
+            if (0 < oDrag.length< 400) {
+                document.onmousemove = function (e) {
+                    e = e || window.event;
+
+                    var top = e.clientY - aDisY;
+                    oDrag.style.top = top + 'px';
+                }
+            };
+        };
+        oDrag.onmouseup = function () {
+            document.onmousemove = null;
+        }
+
+
+    })();
+</script>
+</html>
