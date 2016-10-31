@@ -16,7 +16,7 @@
             position: absolute;
             overflow: hidden;
         }
-        #scorll-btn{
+        #scroll-btn{
             width: 30px;
             height: 30px;
             background: red;
@@ -30,11 +30,11 @@
             /*height: 300px;*/
             background: yellow;
         }
-        #scorll-bar{
+        #scroll-bar{
             width: 30px;
             height: 300px;
             background: black;
-            cursor: pointer;
+
             position:absolute;
             right: 0px;
             top: 0px;
@@ -46,31 +46,35 @@
     <div id="content">
         大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥
     </div>
-    <div id="scorll-bar">
-        <div id="scorll-btn"></div>
+    <div id="scroll-bar">
+        <div id="scroll-btn"></div>
     </div>
 
 </div>
 </body>
 <script>
     (function(){
-        var oContainer = document.getElementById('container');
-        var oscroll-btn = document.getElementById('button');
+        var oScrollBar = document.getElementById('scroll-bar');
+        var oScrollBtn = document.getElementById('scroll-btn');
 
-        obutton.onmousedown = function(e) {
+        oScrollBtn.onmousedown = function(e) {
+
             e = e || window.event;
-
-            var aDisY = e.clientY - obutton.offsetTop;
-
-                document.onmousemove = function (e) {
+            var aDisY = e.clientY - oScrollBtn.offsetTop;
+            oScrollBtn.onmousemove = function (e) {
                     e = e || window.event;
-
                     var top = e.clientY - aDisY;
-                    obutton.style.top = top + 'px';
+                     if(top<0){
+                         top=0;
+                     }
+                if(top>){
+
+                }
+                oScrollBtn.style.top = top + 'px';
 
             };
         };
-        obutton.onmouseup = function () {
+        oScrollBtn.onmouseup = function () {
             document.onmousemove = null;
         }
 
