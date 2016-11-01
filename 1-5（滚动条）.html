@@ -12,7 +12,7 @@
         #container{
             width: 200px;
             height: 300px;
-            background:green;
+            /*background:green;*/
             position: absolute;
             overflow: hidden;
         }
@@ -29,12 +29,14 @@
             width: 170px;
             /*height: 300px;*/
             background: yellow;
+            position: absolute;
+            /*top: 0;*/
+            /*left: 0;*/
         }
         #scroll-bar{
             width: 30px;
             height: 300px;
             background: black;
-
             position:absolute;
             right: 0px;
             top: 0px;
@@ -44,7 +46,7 @@
 <body>
 <div id="container">
     <div id="content">
-        大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥
+        11大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥大禹哥22
     </div>
     <div id="scroll-bar">
         <div id="scroll-btn"></div>
@@ -56,27 +58,30 @@
     (function(){
         var oScrollBar = document.getElementById('scroll-bar');
         var oScrollBtn = document.getElementById('scroll-btn');
-
+        var oContent = document.getElementById('content');
         oScrollBtn.onmousedown = function(e) {
-
             e = e || window.event;
             var aDisY = e.clientY - oScrollBtn.offsetTop;
-            oScrollBtn.onmousemove = function (e) {
+            document.onmousemove = function (e) {
                     e = e || window.event;
                     var top = e.clientY - aDisY;
                      if(top<0){
                          top=0;
                      }
-                if(top>){
-
+                var maxH = oScrollBar.offsetHeight - oScrollBtn.offsetHeight;
+                if(top > maxH) {
+                    top = maxH;
                 }
                 oScrollBtn.style.top = top + 'px';
+                var fScaleY = top / maxH;
+                oContent.style.top = -fScaleY * (oContent.offsetHeight - oScrollBar.offsetHeight) + 'px';
 
+                return false;
             };
         };
-        oScrollBtn.onmouseup = function () {
+        document.onmouseup = function () {
             document.onmousemove = null;
-        }
+        };
 
 
     })();
