@@ -3,8 +3,89 @@
     <head lang="en">
         <meta charset="UTF-8">
         <title>1-6</title>
+        <style>
+
+            ul{
+                list-style: none;
+            }
+
+        </style>
+
     </head>
     <body>
-        
+    <form action="" method="post" name="asd">
+<ul>
+        <li>
+            登录名称:<input id='loading' type="text"/>
+        </li>
+        <li>
+
+            登录密码:<input id='key' type="password"/>
+        </li>
+        <li>
+            确认密码:<input id='surekey' type="password"/>
+        </li>
+        <li>
+            <html>
+
+            <body>
+
+            <form>
+                密保问题:
+                 <select id="question">
+
+                    <option value="你的出生日期">你的出生日期</option>
+                    <option value="你居住在哪里">你居住在哪里</option>
+                    <option value="你最喜欢的运动" selected="selected">你最喜欢的运动</option>
+                    <option value="你最喜欢的动物">你最喜欢的动物</option>
+                </select>
+            </form>
+
+            </body>
+            </html>
+
+        </li>
+        <li>
+
+            问题答案:<input id='answer' type="text"/>
+        </li>
+        <li>
+
+            性别:<input   name="sex" type="radio" checked/>男
+                 <input  name="sex" type="radio"/>女
+        </li>
+        <li >
+            <input id="sign-up"  type="submit" />
+            <input   type="reset"/>
+        </li>
+
+</ul>
+    </form>
     </body>
+    <script>
+         var oSignUp=document.getElementById('sign-up');
+         var oLoading=document.getElementById("loading");
+         var oKey = document.getElementById('key');
+         var oSureKey = document.getElementById('surekey');
+         var oAnswer = document.getElementById('answer');
+         oSignUp.onclick = function() {
+             if (oLoading.value.length < 6) {
+
+                 alert("名称小于6个字符");
+             }else if (oKey.value.length < 6&&oSureKey.value.length < 6) {
+
+                 alert("密码小于6个字符");
+             }else if(oKey.value!==oSureKey.value){
+                 alert('密码不同');
+             }else if(oAnswer.value==''){
+                 alert('答案不能为空');
+             }
+
+             else {
+                alert("注册成功");
+             }
+
+         }
+
+    </script>
 </html>
